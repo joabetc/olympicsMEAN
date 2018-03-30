@@ -14,16 +14,19 @@ _angular2.default.module('olympics', ['ui.router']).config(function ($stateProvi
 
     $stateProvider.state('sports', {
         url: '/sports',
-        templateUrl: 'sports/sports-nav.html'
+        templateUrl: 'sports/sports-nav.html',
+        resolve: {
+            sportsService: function sportsService($http) {
+                return $http.get('/sports');
+            }
+        },
+        controller: function controller(sportsService) {
+            this.sports = sportsService.data;
+        },
+        controllerAs: 'sportsCtrl'
     }).state('sports.medals', {
         url: '/:sportName',
         templateUrl: 'sports/sports-medals.html'
-    });
-}).controller('sportsController', function ($http) {
-    var _this = this;
-
-    $http.get('/sports').then(function (response) {
-        _this.sports = response.data;
     });
 });
 
