@@ -15,6 +15,9 @@ _angular2.default.module('olympics', ['ui.router']).config(function ($stateProvi
     $stateProvider.state('sports', {
         url: '/sports',
         templateUrl: 'sports/sports-nav.html'
+    }).state('sports.medals', {
+        url: '/:sportName',
+        templateUrl: 'sports/sports-medals.html'
     });
 }).controller('sportsController', function ($http) {
     var _this = this;
