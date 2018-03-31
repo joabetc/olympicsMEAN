@@ -29,7 +29,7 @@ app.get("/sports/:name", (request, response) => {
             response.sendStatus(400);
         }
         console.log("Sport doc: ", doc);
-        response.json(sport);
+        response.json(doc);
     });
 });
 
