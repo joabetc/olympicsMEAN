@@ -32,4 +32,8 @@ angular.module('olympics', ['ui.router'])
                 },
                 controllerAs: 'sportCtrl'
             })
+            .state('sports.new', {
+                url: '/:sportName/medal/new',
+                templateUrl: 'sports/new-medal.html'
+            })
     })
