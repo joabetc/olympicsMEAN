@@ -10,8 +10,9 @@
   "author": "Joabe Costa <joabetc@gmail.com> (http://csouza.me/)",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.6.9",
     "@uirouter/angularjs": "latest",
+    "angular": "^1.6.9",
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongodb": "^3.0.5"
   },
