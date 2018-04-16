@@ -38,7 +38,11 @@ app.get("/sports/:name", (request, response) => {
 
 app.post("/sports/:name/medals", jsonParser, (request, response) => {
     let sportsName = request.params.name;
-    let newMedal = request.body.medal;
+    let newMedal = request.body.medal || {};
+
+    if (!newMedal.division || !newMedal.year || !newMedal.country) {
+        response.sendStatus(400);
+    }
 
     let sports = mongoUtil.sports();
     let query = {name: sportName};
