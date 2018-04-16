@@ -22,6 +22,14 @@ _angular2.default.module('olympics', ['ui.router']).config(function ($stateProvi
         },
         controller: function controller(sportsService) {
             this.sports = sportsService.data;
+
+            this.isActive = function (sport) {
+                var pathRegexp = /sports\/(\w+)/;
+                var match = pathRegexp.exec($location.path());
+                if (match === null || match.length === 0) return false;
+                var selectedSportName = match[1];
+                return sport === selectedSportName;
+            };
         },
         controllerAs: 'sportsCtrl'
     }).state('sports.medals', {
@@ -32,7 +40,7 @@ _angular2.default.module('olympics', ['ui.router']).config(function ($stateProvi
                 return $http.get('/sports/' + $stateParams.sportName);
             }
         },
-        controller: function controller(sportService) {
+        controller: function controller(sportService, $location) {
             this.sport = sportService.data;
         },
         controllerAs: 'sportCtrl'
